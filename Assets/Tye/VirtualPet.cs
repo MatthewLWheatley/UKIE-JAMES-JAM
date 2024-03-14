@@ -12,10 +12,14 @@ public class VirtualPet : MonoBehaviour
     public float minDelay = 1f;
     public float maxDelay = 5f;
 
+    public float ZStart = 0f;
+
     private Vector3 targetPosition; // Random target position within the movement area
 
     void Start()
-    {
+    {       
+        ZStart = transform.position.z;
+
         StartCoroutine(MoveDelay());
     }
 
@@ -35,6 +39,7 @@ public class VirtualPet : MonoBehaviour
     void MoveTowardsTarget()
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
+        transform.position = new Vector3(transform.position.x, transform.position.y , ZStart);
     }
 
    /* void CheckReachedDestination()
@@ -67,7 +72,7 @@ public class VirtualPet : MonoBehaviour
                     break;
 
                 case 1:
-                    Debug.Log("Speech");
+                    Debug.Log("BAlls");
                     yield return new WaitForSeconds(5);
                     SetRandomTargetPosition();
                     break;
