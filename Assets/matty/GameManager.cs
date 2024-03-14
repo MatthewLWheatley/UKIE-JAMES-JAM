@@ -6,6 +6,13 @@ public class GameManager : MonoBehaviour
 {
     HealthBar healthBar;
     public float damageAmount = 10.0f;
+    public float currentCorruptionRate = 1.0f;
+    public float currentCorruptionSpreadChance;
+    public float currentAntiVirusDownload = 0.0f;
+    public float downloadRate = 0.0f;
+
+    public int money;
+
     
     
     private void Start()
@@ -27,5 +34,25 @@ public class GameManager : MonoBehaviour
         {
             healthBar.ModifyInteg(damageAmount);
         }
+    }
+
+    public void UpdateCorruptionRate(float value)
+    {
+        currentCorruptionRate += value;
+    }
+
+    public void UpdateSpreadChance(float value)
+    {
+        currentCorruptionSpreadChance += value;
+    }
+
+    public void UpdateDamage(float value)
+    {
+        damageAmount += value;
+    }
+
+    public void UpdateMoney(int value)
+    {
+        money += value;
     }
 }
