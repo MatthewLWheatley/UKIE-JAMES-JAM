@@ -57,7 +57,7 @@ public class VirtualPet : MonoBehaviour
 
         while (true) 
         {
-            int randomChance = Random.Range(0, 2);
+            int randomChance = Random.Range(0, 3);
 
             switch (randomChance)
             {
@@ -68,6 +68,11 @@ public class VirtualPet : MonoBehaviour
 
                 case 1:
                     Debug.Log("Speech");
+                    yield return new WaitForSeconds(5);
+                    SetRandomTargetPosition();
+                    break;
+
+                case 2:
                     yield return new WaitForSeconds(5);
                     SetRandomTargetPosition();
                     break;
