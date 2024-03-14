@@ -8,7 +8,7 @@ public class IncreaseSpreadChance : UISkillInteraction
     public override void TriggerPerkEffect()
     {
         base.TriggerPerkEffect();
-        gameManager.UpdateSpreadChance(spreadChance);
+        //gameManager.UpdateSpreadChance(spreadChance);
     }
 
 }
