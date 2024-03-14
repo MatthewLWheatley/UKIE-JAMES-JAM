@@ -33,13 +33,17 @@ public class DrawWindow : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     void createFiles() 
     {
         File fileExplorer = new File(0,"Folder","File Explorer");
-        File file1 = new File(0,"Folder","File Explorer");
-        File file2 = new File(0,"Folder","File Explorer");
-        File file3 = new File(0,"Folder","File Explorer");
-        File file4 = new File(0,"Folder","File Explorer");
-        File file5 = new File(0,"Folder","File Explorer");
-        files.Add(0,file1);
-        files.Add(1,);
+        File file1 = new File(1,"Folder","File Explorer");
+        File file2 = new File(2,"Folder","File Explorer");
+        File file3 = new File(3,"Folder","File Explorer");
+        File file4 = new File(4,"Folder","File Explorer");
+        File file5 = new File(5,"Folder","File Explorer");
+        files.Add(0,fileExplorer);
+        files.Add(1,file1);
+        files.Add(2,file2);
+        files.Add(3,file3);
+        files.Add(4,file4);
+        files.Add(5,file5);
     }
 
     void setFile() 
