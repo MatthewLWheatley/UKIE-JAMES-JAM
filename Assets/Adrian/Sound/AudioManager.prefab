@@ -75,6 +75,12 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  - name: ErrorSound
+    clip: {fileID: 8300000, guid: 0e244f03d3127c842b66147161c45514, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
   music: []
   distortionFilter: {fileID: 0}
   distortion: 0
