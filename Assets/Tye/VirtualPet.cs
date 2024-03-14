@@ -67,7 +67,7 @@ public class VirtualPet : MonoBehaviour
                     break;
 
                 case 1:
-                    Debug.Log("speech");
+                    Debug.Log("Speech");
                     yield return new WaitForSeconds(5);
                     SetRandomTargetPosition();
                     break;
