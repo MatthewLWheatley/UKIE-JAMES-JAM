@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
+using TMPro;
 
 public class UISkillInteraction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -11,24 +11,41 @@ public class UISkillInteraction : MonoBehaviour, IPointerEnterHandler, IPointerE
     //public 
     private Button Self;
     public GameObject ToolTipObj;
+    public TMP_Text CostText;
     public AudioManager audioManager;
     bool SkillActivated;
+    public int SkillCost;
+    public GameManager gameManager;
+    
 
     private void Start()
     {
         Self = GetComponent<Button>();
         audioManager = GameObject.FindObjectOfType<AudioManager>();
+        gameManager = GameObject.FindObjectOfType<GameManager>();
         SkillActivated = false;
+        CostText.text = SkillCost.ToString();
+        
     }
 
     public void ActivateSkill()
     {
         //need to check if currency 
-        Self.interactable = false;
-        SkillActivated = true; 
-        for(int i = 0; i < NextSkillsInTree.Length; i++)
+        if (gameManager.money >= SkillCost)
         {
-            NextSkillsInTree[i].interactable = true;
+            gameManager.UpdateMoney(-SkillCost);
+            Self.interactable = false;
+            SkillActivated = true;
+            for (int i = 0; i < NextSkillsInTree.Length; i++)
+            {
+                NextSkillsInTree[i].interactable = true;
+            }
+
+            TriggerPerkEffect();
+        }
+        else
+        {
+            audioManager.PlaySFX("ErrorSound");
         }
        
 
@@ -53,6 +70,11 @@ public class UISkillInteraction : MonoBehaviour, IPointerEnterHandler, IPointerE
         {
             audioManager.PlaySFX("ToolTipOff");
         }
+    }
+
+    public virtual void TriggerPerkEffect()
+    {
+
     }
    
 }
