@@ -13,6 +13,7 @@ public class UISkillInteraction : MonoBehaviour, IPointerEnterHandler, IPointerE
     public GameObject ToolTipObj;
     public AudioManager audioManager;
     bool SkillActivated;
+    public int SkillCost;
 
     private void Start()
     {
