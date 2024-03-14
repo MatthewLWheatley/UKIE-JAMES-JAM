@@ -16,7 +16,11 @@ public class DrawWindow : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public Button XButton;
 
+    public List<Button> buttons;
+
     Dictionary<int, File> files = new Dictionary<int, File>();
+
+    File thisFile = null;
 
     void Start()
     {
@@ -28,16 +32,24 @@ public class DrawWindow : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         }
 
         createFiles();
+        thisFile = files[0]; 
+        DrawFiles();
     }
 
     void createFiles() 
     {
         File fileExplorer = new File(0,"Folder","File Explorer");
-        File file1 = new File(1,"Folder","File Explorer");
-        File file2 = new File(2,"Folder","File Explorer");
-        File file3 = new File(3,"Folder","File Explorer");
-        File file4 = new File(4,"Folder","File Explorer");
-        File file5 = new File(5,"Folder","File Explorer");
+        File file1 = new File(1,"Folder","Documents");
+        File file2 = new File(2,"Folder","Downloads");
+        File file3 = new File(3,"Folder","Music");
+        File file4 = new File(4,"Folder","Pictures");
+        File file5 = new File(5,"Folder","Videos");
+        List<File> children = new List<File>();
+        children.Add(file1);
+        children.Add(file2);
+        children.Add(file3);
+        children.Add(file4);
+        children.Add(file5);
         files.Add(0,fileExplorer);
         files.Add(1,file1);
         files.Add(2,file2);
@@ -89,8 +101,11 @@ public class DrawWindow : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     }
 
     public void DrawFiles() 
-    { 
-        
+    {
+        foreach (var file in thisFile.children) 
+        { 
+            
+        }
     }
 
     public void OpenNewWindow() 
@@ -105,7 +120,7 @@ public class File
     string type;
     string name;
     //File parent;
-    List<File> children;
+    public List<File> children;
 
     bool isDeleted = false;
     bool isCurrupted = false;
