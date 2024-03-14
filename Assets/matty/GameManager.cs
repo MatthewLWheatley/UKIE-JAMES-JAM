@@ -8,23 +8,25 @@ public class GameManager : MonoBehaviour
     public float damageAmount = 10.0f;
     //%
     public float currentCorruptionRate = 100.0f;
+
+    public float currentCorruptionState = 0.0f;
     //%
-    public float currentCorruptionSpreadChance = 10.0f;
+    //public float currentCorruptionSpreadChance = 10.0f;//
     //%
     public float deleteRate;
     //%
-    public float deleteChance;
+    //public float deleteChance;//
     //%
     public float currentDeleteState;
     
     //%
     public float currentAntiVirusDownload = 0.0f;
     //%
-    public float downloadRate = 0.0f;
+    public float currentAntiVirusDownloadRate = 0.0f;
     //%
     public float detectRate;
     //%
-    public float antiVirusWorkRate = 1.0f;
+    public float antiVirusKillRate = 1.0f;
     //%
     public float currentAntiVirusState = 0.0f;
 
@@ -63,10 +65,10 @@ public class GameManager : MonoBehaviour
         currentCorruptionRate += value;
     }
 
-    public void UpdateSpreadChance(float value)
+    /*public void UpdateSpreadChance(float value)
     {
         currentCorruptionSpreadChance += value;
-    }
+    }*/
 
     public void UpdateDamage(float value)
     {
@@ -90,7 +92,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateDownloadRate(float value)
     {
-        downloadRate += value;
+        currentAntiVirusDownloadRate += value;
     }
 
     public void UpdateDetectRate(float value)
@@ -100,7 +102,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateAntiVirusWorkRate(float value)
     {
-        antiVirusWorkRate += value;
+        antiVirusKillRate += value;
     }
 
     public void UpdateCurrentAntiVirusState(float value)
@@ -108,8 +110,8 @@ public class GameManager : MonoBehaviour
         currentAntiVirusState += value;
     }
 
-    public void UpdateDeleteChance(float value)
+    /*public void UpdateDeleteChance(float value)
     {
         deleteChance += value;
-    }
+    }*/
 }
