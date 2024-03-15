@@ -220,7 +220,7 @@ public class GameManager : MonoBehaviour
         {
             deleleObject.gameObject.transform.GetChild(0).GetComponent<Slider>().value = DeleteState;
         }
-
+        DeleteState = FileManager.GetComponent<DrawWindow>().deletionCounter;
         //DeleteState += deleteRate * Time.deltaTime;
     }
 
@@ -255,7 +255,6 @@ public class GameManager : MonoBehaviour
         AntiVirusProgressBar.SetActive(true);
         StartCoroutine(StartAntiVirusProcess());
     }
-
 
     public void SetGameDifficulty(int Diff)
     {

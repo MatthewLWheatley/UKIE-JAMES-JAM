@@ -131,7 +131,7 @@ public class VirtualPet : MonoBehaviour
     IEnumerator AiStateMachine()
     {
         int randChoice = Random.Range(0, 3);
-        Debug.Log("randChoice was: " + randChoice);
+        //Debug.Log("randChoice was: " + randChoice);
         switch(randChoice)
         {
             //move somewhere
