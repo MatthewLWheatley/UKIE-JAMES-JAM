@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.Animations;
+//using UnityEditor.Animations;
 
 public class VirtualPet : MonoBehaviour
 {
