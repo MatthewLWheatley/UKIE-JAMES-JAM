@@ -47,7 +47,12 @@ public class DrawWindow : MonoBehaviour
     {
         createFiles();
 
-        foreach (var temp in files) 
+        foreach (var temp in curruptableFiles) 
+        {
+            temp.Value.FileManager = this.gameObject;
+        }
+
+        foreach (var temp in files)
         {
             temp.Value.FileManager = this.gameObject;
         }
@@ -67,6 +72,16 @@ public class DrawWindow : MonoBehaviour
         file.Value.type = "Txt-C";
         file.Value.isCurrupting = true;
         Debug.Log($"{file.Value.ID}, {file.Key}, {file.Value.name}");
+    }
+
+    public void spread() 
+    {
+        int temp = Random.Range(0, curruptableFiles.Count);
+        if (!curruptableFiles.ElementAt(temp).Value.isCurrupting) 
+        {
+            curruptableFiles.ElementAt(temp).Value.isCurrupting = true;
+            Debug.Log("spreaded");
+        }
     }
 
     void createFiles() 
@@ -787,7 +802,7 @@ public class File
 
     public void update() 
     {
-        if (curruptionPercent > 10)
+        if (curruptionPercent > 100)
         {
             type = "Runied";
             FileManager.GetComponent<DrawWindow>().Ruin(ID);
