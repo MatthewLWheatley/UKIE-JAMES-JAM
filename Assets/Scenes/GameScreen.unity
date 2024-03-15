@@ -1305,6 +1305,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 293042305}
   m_CullTransparentMesh: 1
+--- !u!1 &298811383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2439356867339453999, guid: dd9de3343d346ce4c80a031f98f570e2, type: 3}
+  m_PrefabInstance: {fileID: 2108613023}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &305926951
 GameObject:
   m_ObjectHideFlags: 0
@@ -5868,13 +5873,14 @@ MonoBehaviour:
   antiVirusKillRate: 1
   AntiVirusState: 0
   maxAntiVirusState: 100
-  money: 1000000
+  money: 0
   baseMoneyGain: 10
   moneyGainRate: 100
   DownloadObject: {fileID: 485664651}
   CurupttertionObject: {fileID: 1072226131}
   deleleObject: {fileID: 2002722065}
   BitCounter: {fileID: 946367067}
+  FileManager: {fileID: 298811383}
 --- !u!4 &1670820100
 Transform:
   m_ObjectHideFlags: 0
@@ -7793,7 +7799,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4707971770847045959, guid: dd9de3343d346ce4c80a031f98f570e2, type: 3}
   m_PrefabInstance: {fileID: 2108613023}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 298811383}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2d05cc565cb5e04ea83c5d701063ea4, type: 3}

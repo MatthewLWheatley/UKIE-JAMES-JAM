@@ -15,7 +15,7 @@ public class DrawWindow : MonoBehaviour
 {
     Dictionary<int, File> files = new Dictionary<int, File>();
 
-    Dictionary<int, File> curruptableFiles = new Dictionary<int, File>();
+    public Dictionary<int, File> curruptableFiles = new Dictionary<int, File>();
     public List<Sprite> sprites = new List<Sprite>();
 
     public GameObject windowPreFab;
@@ -23,27 +23,33 @@ public class DrawWindow : MonoBehaviour
 
     public Canvas canvas;
 
+    public float corruptCounter = 0;
+
     private void Update()
     {
-        foreach (var file in curruptableFiles.Values) 
+        float corruptionRate = 0.0f;
+        corruptionRate = gamemanager.GetComponent<GameManager>().CorruptionRate;
+        var corruptionValuse = curruptableFiles.Values.ToArray();
+        for(int i = 0; i < corruptionValuse.Count(); i++) 
         {
+            var file = corruptionValuse[i];
             if (file.isCurrupting) 
-            { 
-                
+            {
+                file.increaseCoruption(corruptionRate);
+                file.update();
             }
         }
+        corruptCounter = 100.0f - corruptionValuse.Count();
     }
 
     void Start()
     {
-
         createFiles();
         Debug.Log($"{curruptableFiles.Count}");
         var file = curruptableFiles.ElementAt(Random.Range( 0, files.Count));
         file.Value.type = "Txt-C";
         file.Value.isCurrupting = true;
         Debug.Log($"{file.Value.ID}, {file.Key}, {file.Value.name}");
-
     }
 
     void createFiles() 
@@ -703,19 +709,14 @@ public class DrawWindow : MonoBehaviour
     {
         GameObject clone = Instantiate(windowPreFab, new Vector3(0, 0, 0), Quaternion.identity, this.transform);
         clone.GetComponent<Window>().thisFile = files[ID];
+        clone.GetComponent<Window>().oldFile = files[ID];
         clone.GetComponent<Window>().gameManager = gamemanager.GetComponent<GameManager>();
+        clone.GetComponent<Window>().parent = this.gameObject;
         clone.transform.localScale = new Vector3(1f, 1f, 1f);
         clone.transform.position = new Vector3(clone.transform.position.x, clone.transform.position.y, 0);
         clone.transform.localPosition = new Vector3(clone.transform.localPosition.x, clone.transform.localPosition.y, 0);
         clone.GetComponent<Window>().canvas = canvas;
         clone.GetComponent<Window>().DrawFiles();
-    }
-
-    public void startWindow() 
-    {
-        GameObject clone = Instantiate(windowPreFab, new Vector3(0, 0, 0), Quaternion.identity, this.transform);
-        clone.GetComponent<Window>().thisFile = files[0];
-        clone.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 }
 
@@ -724,7 +725,7 @@ public class File
     public int ID;
     public string type;
     public string name;
-    //File parent;
+    public GameObject parent;
     public List<File> children;
 
     public bool isDeleted = false;
@@ -759,5 +760,34 @@ public class File
     public void StartCurrupted() 
     { 
         
+    }
+
+    public void increaseCoruption(float rate) 
+    {
+        curruptionPercent += rate * Time.deltaTime;
+    }
+
+    public void update() 
+    {
+        if (curruptionPercent > 100)
+        {
+            type = "Runied";
+            if (parent != null) parent.GetComponent<Window>().Ruin(ID);
+            if (parent != null) parent.GetComponent<Window>().DrawFiles();
+        }
+        //if (curruptionPercent > 10 && curruptionPercent < 10.5)
+        //{
+        //    if (parent != null) parent.GetComponent<Window>().Spread(ID);
+        //}
+        if (type == "Txt")
+        {
+            int rndInt = Random.Range(0, 10000);
+            if (rndInt == 0)
+            {
+                type = "Txt-C";
+                if (parent != null) parent.GetComponent<Window>().DrawFiles();
+                Debug.Log("fuck");
+            }
+        }
     }
 }
