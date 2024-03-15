@@ -46,6 +46,19 @@ public class GameManager : MonoBehaviour
     public GameObject deleleObject;
     public GameObject BitCounter;
 
+    private void Awake()
+    {
+        difficultyTransfer diffSettings = GameObject.FindAnyObjectByType<difficultyTransfer>();
+        if (diffSettings != null)
+        {
+            SetGameDifficulty(diffSettings.Difficulty);
+        }
+        else
+        {
+            SetGameDifficulty(1);
+        }
+    }
+
     private void Start()
     {
         healthBar = GetComponent<HealthBar>();
@@ -161,6 +174,31 @@ public class GameManager : MonoBehaviour
         BitCounter.GetComponent<TMP_Text>().text = $"{money}";
     }
 
+
+    public void SetGameDifficulty(int Diff)
+    {
+        switch(Diff)
+        {
+            
+            case 1:
+                AntiVirusDownloadRate = 1.5f;
+                antiVirusKillRate = 1.0f;
+                Debug.Log("the game difficulty is easy");
+                break; 
+            
+            case 2:
+                AntiVirusDownloadRate = 3.0f;
+                antiVirusKillRate = 2.0f;
+                Debug.Log("the game difficulty is normal");
+                break; 
+            
+            case 3:
+                AntiVirusDownloadRate = 7.0f;
+                antiVirusKillRate = 4.0f;
+                Debug.Log("the game difficulty is hard");
+                break;
+        }
+    }
     /*public void UpdateDeleteChance(float value)
     {
         deleteChance += value;
