@@ -15,6 +15,7 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
     public Vector2 offset;
     public Canvas canvas;
     public Button XButton;
+    public GameObject FileManager;
 
     public GameObject parent;
 
@@ -136,7 +137,11 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
 
     public void gainMoney(File file, int count) 
     {
-        if(file.type == "Txt-C")gameManager.UpdateMoney();
+        if (file.type == "Txt-C")
+        {
+            gameManager.UpdateMoney();
+            if(Random.Range(0,2) == 0)file.FileManager.GetComponent<DrawWindow>().spread();
+        }
         buttons[count].gameObject.GetComponent<Button>().interactable = false;
         file.type = "Txt";
         this.DrawFiles();
