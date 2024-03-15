@@ -143,7 +143,7 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
         if (file.type == "Txt-C")
         {
             gameManager.UpdateMoney();
-            if(Random.Range(0,2) == 0)file.FileManager.GetComponent<DrawWindow>().spread();
+            if(Random.Range(0,4) <= 2)file.FileManager.GetComponent<DrawWindow>().spread();
             if (file.curruptTimer == 100)
             {
                 file.curruptionPercent = 0;

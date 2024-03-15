@@ -61,6 +61,7 @@ public class DrawWindow : MonoBehaviour
         if (temp)
         {
             //LOSE GAME
+            gamemanager.GetComponent<GameManager>().LoseTheGame();
             Debug.Log("lost the game");
         }
         
