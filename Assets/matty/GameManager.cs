@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public float antiVirusKillRate = 1.0f;
     //%
     public float currentAntiVirusState = 0.0f;
-
+    
     public float maxAntiVirusState = 100.0f;
 
 
