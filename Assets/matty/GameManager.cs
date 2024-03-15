@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     public float moneyGainRate = 100.0f;
 
     public GameObject DownloadObject;
+    public GameObject AntiVirusProgressBar;
     public GameObject CurupttertionObject;
     public GameObject deleleObject;
     public GameObject BitCounter;
@@ -155,8 +156,24 @@ public class GameManager : MonoBehaviour
         if (DownloadObject.activeSelf)
         {
             DownloadObject.gameObject.transform.GetChild(0).GetComponent<Slider>().value = AntiVirusDownload;
-            AntiVirusDownload += AntiVirusDownloadRate;
+            //AntiVirusDownload += AntiVirusDownloadRate;
         }
+    }
+
+    public void UpdateAntiVirusProgress()
+    {
+        if (AntiVirusProgressBar.activeSelf)
+        {
+            AntiVirusProgressBar.gameObject.transform.GetChild(0).GetComponent<Slider>().value = AntiVirusState;
+        }
+    }
+
+    public IEnumerator StartAntiDownload()
+    {
+        
+        yield return new WaitForSeconds(5f);
+        AntiVirusDownload += AntiVirusDownloadRate;
+        StartCoroutine(StartAntiDownload());
     }
 
     public void updateCururproru() 
@@ -185,9 +202,10 @@ public class GameManager : MonoBehaviour
 
     private void CheckIfDownloadNeedsToStart()
     {
-        if (CorruptionState >=  PercentOfVirusToStartDownload)
+        if (CorruptionState >=  PercentOfVirusToStartDownload && DownloadObject.active == false)
         {
             DownloadObject.SetActive(true);
+            StartCoroutine(StartAntiDownload());
         }
     }
 

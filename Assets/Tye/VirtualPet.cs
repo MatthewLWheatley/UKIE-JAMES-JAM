@@ -145,11 +145,15 @@ public class VirtualPet : MonoBehaviour
             //chat some shit
             case 1:
                 animator.SetBool("isTalking?", true);
+                animator.SetBool("isWalking?", false);
+                targetPosition = transform.position;
                 ShowSpeechBubble();
                 chooseRandomLines();
                 break;
             //be an idle idol
             case 2:
+                animator.SetBool("isWalking?", false);
+                animator.SetBool("isTalking?", false);
                 UpdateMessageText("");
                 HideSpeechBubble();
                 targetPosition = transform.position;

@@ -47,7 +47,7 @@ public class DrawWindow : MonoBehaviour
     {
         createFiles();
 
-        foreach (var temp in files) 
+        foreach (var temp in curruptableFiles) 
         {
             temp.Value.FileManager = this.gameObject;
         }
