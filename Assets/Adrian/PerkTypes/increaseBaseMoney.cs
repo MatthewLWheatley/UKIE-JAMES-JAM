@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class increaseBaseMoney : UISkillInteraction
 {
-    int amount;
+    public int amount;
     public override void TriggerPerkEffect()
     {
         base.TriggerPerkEffect();

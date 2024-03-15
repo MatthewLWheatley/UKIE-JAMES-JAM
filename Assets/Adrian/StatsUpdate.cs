@@ -33,7 +33,7 @@ public class StatsUpdate : MonoBehaviour
     {
         CCRate.text = gameManager.currentCorruptionRate.ToString();
         CCS.text = gameManager.currentCorruptionState.ToString();
-        CKR.text = gameManager.detectRate.ToString();
+        CKR.text = gameManager.deleteRate.ToString();
         CKS.text = gameManager.currentDeleteState.ToString();
         CAB.text = gameManager.money.ToString();
         CBM.text = gameManager.moneyGainRate.ToString();

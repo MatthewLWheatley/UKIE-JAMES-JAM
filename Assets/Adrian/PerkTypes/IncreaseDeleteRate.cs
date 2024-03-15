@@ -9,6 +9,6 @@ public class IncreaseDeleteRate : UISkillInteraction
     public override void TriggerPerkEffect()
     {
         base.TriggerPerkEffect();
-        //gameManager.UpdateD
+        gameManager.UpdateDeleteRate(DeathRateIncrease);
     }
 }
