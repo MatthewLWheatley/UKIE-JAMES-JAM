@@ -5117,6 +5117,14 @@ PrefabInstance:
       propertyPath: movementAreaSize.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: timeBetweenActions
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2451019980320265431, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
     - {fileID: 870732710377373549, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
@@ -5868,7 +5876,7 @@ MonoBehaviour:
   antiVirusKillRate: 1
   currentAntiVirusState: 0
   maxAntiVirusState: 100
-  money: 0
+  money: 12414
   moneyGainRate: 100
 --- !u!4 &1670820100
 Transform:

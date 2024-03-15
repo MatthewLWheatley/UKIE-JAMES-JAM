@@ -25,13 +25,21 @@ public class VirtualPet : MonoBehaviour
     private Vector3 targetPosition; // Random target position within the movement area
     private RectTransform messageRectTransform;
     public Animator animator;
+    private GameManager gameManager;
+    public float timeBetweenActions;
+
+    public string[] GoodLines;
+    public string[] WhatLines;
+    public string[] CorruptedLines;
+    public string[] AhhhhhLines;
 
     void Start()
     {       
         ZStart = transform.position.z;
         messageRectTransform = messageText.GetComponent<RectTransform>();
-
-        StartCoroutine(MoveDelay());
+        gameManager = GameObject.FindObjectOfType<GameManager>();
+        StartCoroutine(AiStateMachine());
+        //StartCoroutine(MoveDelay());
     }
 
     void Update()
@@ -102,6 +110,42 @@ public class VirtualPet : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, new Vector3(movementAreaSize.x, movementAreaSize.y, movementAreaSize.z));
     }
 
+    IEnumerator AiStateMachine()
+    {
+        int randChoice = Random.Range(0, 3);
+        Debug.Log("randChoice was: " + randChoice);
+        switch(randChoice)
+        {
+            //move somewhere
+            case 0:
+                UpdateMessageText("");
+                animator.SetBool("isWalking?", false);
+                animator.SetBool("isTalking?", false);
+                SetRandomTargetPosition();
+            break;
+            //chat some shit
+            case 1:
+                animator.SetBool("isTalking?", true);
+                UpdateMessageText("Balls");
+                Debug.Log("Balls");
+                break;
+            //be an idle idol
+            case 2:
+                UpdateMessageText("");
+                targetPosition = transform.position;
+            break;
+
+        }
+
+        yield return new WaitForSeconds(timeBetweenActions);
+        StartCoroutine(AiStateMachine());
+    }
+
+    private void chooseRandomLines()
+    {
+       
+    }
+
     IEnumerator MoveDelay()
     {
 
@@ -156,6 +200,15 @@ public class VirtualPet : MonoBehaviour
                     animator.SetBool("isWalking?", false);
                     animator.SetBool("isTalking?", false);
                     //SetRandomTargetPosition();
+                    break;
+
+                case 5:
+                    UpdateMessageText("The Human body contains 1.3 gallons of blood! Thats almost enough to satiate me!");
+                    Debug.Log("Oh");
+                    yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
+                    animator.SetBool("isWalking?", false);
+                    animator.SetBool("isTalking?", false);
+                    SetRandomTargetPosition();
                     break;
             }
         }
