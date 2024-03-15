@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.Assertions.Must;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -36,8 +37,8 @@ public class DrawWindow : MonoBehaviour
             if (file.isCurrupting) 
             {
                 file.increaseCoruption(corruptionRate);
-                file.update();
             }
+            file.update();
         }
         corruptCounter = 100.0f - corruptionValuse.Count();
     }
@@ -45,8 +46,24 @@ public class DrawWindow : MonoBehaviour
     void Start()
     {
         createFiles();
+
+        foreach (var temp in files) 
+        {
+            temp.Value.FileManager = this.gameObject;
+        }
+
         Debug.Log($"{curruptableFiles.Count}");
         var file = curruptableFiles.ElementAt(Random.Range( 0, files.Count));
+        file.Value.type = "Txt-C";
+        file.Value.isCurrupting = true;
+        Debug.Log($"{file.Value.ID}, {file.Key}, {file.Value.name}");
+    }
+
+    public void Ruin(int ID)
+    {
+        curruptableFiles.Remove(ID);
+        Debug.Log($"{curruptableFiles.Count}");
+        var file = curruptableFiles.ElementAt(Random.Range(0, curruptableFiles.Count));
         file.Value.type = "Txt-C";
         file.Value.isCurrupting = true;
         Debug.Log($"{file.Value.ID}, {file.Key}, {file.Value.name}");
@@ -660,8 +677,8 @@ public class DrawWindow : MonoBehaviour
 
                     children.Clear();
                     children.Add(Txt93);
-                    children.Add(Txt93);
-                    children.Add(Txt93);
+                    children.Add(Txt94);
+                    children.Add(Txt95);
                     files.Add(124, Movies);
                     files[124].addChildren(children);
                 }
@@ -726,6 +743,7 @@ public class File
     public string type;
     public string name;
     public GameObject parent;
+    public GameObject FileManager;
     public List<File> children;
 
     public bool isDeleted = false;
@@ -769,17 +787,17 @@ public class File
 
     public void update() 
     {
-        if (curruptionPercent > 100)
+        if (curruptionPercent > 10)
         {
             type = "Runied";
-            if (parent != null) parent.GetComponent<Window>().Ruin(ID);
+            FileManager.GetComponent<DrawWindow>().Ruin(ID);
             if (parent != null) parent.GetComponent<Window>().DrawFiles();
         }
         //if (curruptionPercent > 10 && curruptionPercent < 10.5)
         //{
         //    if (parent != null) parent.GetComponent<Window>().Spread(ID);
         //}
-        if (type == "Txt")
+        if (type == "Txt" && isCurrupting == true)
         {
             int rndInt = Random.Range(0, 10000);
             if (rndInt == 0)
