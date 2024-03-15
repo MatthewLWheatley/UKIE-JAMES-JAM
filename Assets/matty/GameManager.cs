@@ -263,6 +263,11 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
+    public void LoseTheGame()
+    {
+        //load game over scene
+    }
     /*public void UpdateDeleteChance(float value)
     {
         deleteChance += value;
