@@ -18,7 +18,6 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
     public GameObject FileManager;
 
     public GameObject parent;
-
     public GameManager gameManager;
 
     public List<Button> buttons;

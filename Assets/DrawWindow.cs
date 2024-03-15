@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading;
 using System.Xml.Linq;
@@ -17,6 +18,7 @@ public class DrawWindow : MonoBehaviour
     Dictionary<int, File> files = new Dictionary<int, File>();
 
     public Dictionary<int, File> curruptableFiles = new Dictionary<int, File>();
+    public Dictionary<int, File> deletableFiles = new Dictionary<int, File>();
     public List<Sprite> sprites = new List<Sprite>();
 
     public GameObject windowPreFab;
@@ -29,17 +31,31 @@ public class DrawWindow : MonoBehaviour
     private void Update()
     {
         float corruptionRate = 0.0f;
+        float deletionRate = 0.0f;
         corruptionRate = gamemanager.GetComponent<GameManager>().CorruptionRate;
+        deletionRate = gamemanager.GetComponent<GameManager>().deleteRate;
         var corruptionValuse = curruptableFiles.Values.ToArray();
-        for(int i = 0; i < corruptionValuse.Count(); i++) 
+        bool temp = true;
+        for (int i = 0; i < corruptionValuse.Count(); i++)
         {
             var file = corruptionValuse[i];
-            if (file.isCurrupting) 
+            if (file.isCurrupting)
             {
                 file.increaseCoruption(corruptionRate);
+                temp = false;
+            }
+            if (file.isDeleting) 
+            {
+                file.increasedeletion(deletionRate);
             }
             file.update();
         }
+        if (temp)
+        {
+            //LOSE GAME
+            Debug.Log("lost the game");
+        }
+        
         corruptCounter = 100.0f - corruptionValuse.Count();
     }
 
@@ -66,12 +82,18 @@ public class DrawWindow : MonoBehaviour
 
     public void Ruin(int ID)
     {
+        deletableFiles.Add(ID, curruptableFiles[ID]);
         curruptableFiles.Remove(ID);
         Debug.Log($"{curruptableFiles.Count}");
-        var file = curruptableFiles.ElementAt(Random.Range(0, curruptableFiles.Count));
-        file.Value.type = "Txt-C";
-        file.Value.isCurrupting = true;
-        Debug.Log($"{file.Value.ID}, {file.Key}, {file.Value.name}");
+        //var file = curruptableFiles.ElementAt(Random.Range(0, curruptableFiles.Count));
+        //file.Value.type = "Txt-C";
+        //file.Value.isCurrupting = true;
+        //Debug.Log($"{file.Value.ID}, {file.Key}, {file.Value.name}");
+    }
+
+    public void delete(int ID) 
+    {
+        Debug.Log("deleted file");
     }
 
     public void spread() 
@@ -761,10 +783,12 @@ public class File
     public GameObject FileManager;
     public List<File> children;
 
+    public bool isDeleting = false;
     public bool isDeleted = false;
     public bool isCurrupted = false;
     public bool isCurrupting = false;
     public float curruptionPercent = 0;
+    public float deletionPercent = 0;
 
     public File(int _ID, string _type, string _name)
     { 
@@ -785,19 +809,20 @@ public class File
         curruptionPercent = 0;
     }
 
-    public void ModifyCurruption()
+    public void delete() 
     {
-
-    }
-
-    public void StartCurrupted() 
-    { 
-        
+        isDeleting = true;
+        deletionPercent = 0;
     }
 
     public void increaseCoruption(float rate) 
     {
         curruptionPercent += rate * Time.deltaTime;
+    }
+
+    public void increasedeletion(float rate)
+    {
+        deletionPercent += rate * Time.deltaTime;
     }
 
     public void update() 
@@ -814,13 +839,19 @@ public class File
         //}
         if (type == "Txt" && isCurrupting == true)
         {
-            int rndInt = Random.Range(0, 10000);
+            int rndInt = Random.Range(0, 2500);
             if (rndInt == 0)
             {
                 type = "Txt-C";
                 if (parent != null) parent.GetComponent<Window>().DrawFiles();
                 Debug.Log("fuck");
             }
+        }
+        if (deletionPercent > 100) 
+        {
+            type = "Deleted";
+            FileManager.GetComponent<DrawWindow>().delete(ID);
+            if (parent != null) parent.GetComponent<Window>().DrawFiles();
         }
     }
 }

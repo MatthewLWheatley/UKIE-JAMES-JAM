@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
 
     public float money;
-    public float baseMoneyGain = 10.0f;
+    public float baseMoneyGain = 16.0f;
     //%
     public float moneyGainRate = 100.0f;
 
