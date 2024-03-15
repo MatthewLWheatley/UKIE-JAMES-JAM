@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         healthBar = GetComponent<HealthBar>();
+        StartCoroutine(StartDeletion());
     }
 
     private void Update()
@@ -80,6 +81,7 @@ public class GameManager : MonoBehaviour
         updateDelelete();
         updateBits();
         CheckIfDownloadNeedsToStart();
+        CheckDeletionRate();
     }
 
     public void UpdateCorruptionRate(float value)
@@ -185,6 +187,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public IEnumerator StartDeletion()
+    {
+        yield return new WaitForSeconds(1);
+        DeleteState += deleteRate;
+        StartCoroutine(StartDeletion());
+    }
+
     public IEnumerator StartAntiVirusProcess()
     {
         yield return new WaitForSeconds(5f);
@@ -212,7 +221,7 @@ public class GameManager : MonoBehaviour
             deleleObject.gameObject.transform.GetChild(0).GetComponent<Slider>().value = DeleteState;
         }
 
-        DeleteState += deleteRate * Time.deltaTime;
+        //DeleteState += deleteRate * Time.deltaTime;
     }
 
     public void updateBits()
@@ -226,6 +235,18 @@ public class GameManager : MonoBehaviour
         {
             DownloadObject.SetActive(true);
             StartCoroutine(StartAntiDownload());
+        }
+    }
+
+    private void CheckDeletionRate()
+    {
+        if(DeleteState >= CorruptionState)
+        {
+            LoseTheGame();
+        }
+        else if(DeleteState >= 100)
+        {
+            //win the game
         }
     }
 
