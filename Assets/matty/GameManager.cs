@@ -75,6 +75,11 @@ public class GameManager : MonoBehaviour
         damageAmount += value;
     }
 
+    public void UpdateDeleteRate(float value)
+    {
+        deleteRate += value;
+    }
+
     public void UpdateMoney(int value)
     {
         money += value;
