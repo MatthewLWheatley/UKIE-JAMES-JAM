@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
             StartDownload();
         }
         UpdateDownload();
+        UpdateAntiVirusProgress();
         updateCururproru();
         updateDelelete();
         updateBits();
@@ -173,7 +174,26 @@ public class GameManager : MonoBehaviour
         
         yield return new WaitForSeconds(5f);
         AntiVirusDownload += AntiVirusDownloadRate;
-        StartCoroutine(StartAntiDownload());
+        if (AntiVirusDownload >= 100)
+        {
+            DownloadObject.SetActive(false);
+            StartAntiVirus();
+        }
+        else
+        {
+            StartCoroutine(StartAntiDownload());
+        }
+    }
+
+    public IEnumerator StartAntiVirusProcess()
+    {
+        yield return new WaitForSeconds(5f);
+        AntiVirusState += antiVirusKillRate;
+        if(AntiVirusState >= 100)
+        {
+            Debug.Log("YOU LOSe");
+            //losE the game
+        }
     }
 
     public void updateCururproru() 
@@ -207,6 +227,12 @@ public class GameManager : MonoBehaviour
             DownloadObject.SetActive(true);
             StartCoroutine(StartAntiDownload());
         }
+    }
+
+    private void StartAntiVirus()
+    {
+        AntiVirusProgressBar.SetActive(true);
+        StartCoroutine(StartAntiVirusProcess());
     }
 
 

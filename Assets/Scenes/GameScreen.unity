@@ -5872,7 +5872,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 3.935913, y: 0}
   m_SizeDelta: {x: 17.872, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6663,7 +6663,7 @@ MonoBehaviour:
   baseMoneyGain: 10
   moneyGainRate: 100
   DownloadObject: {fileID: 485664651}
-  AntiVirusProgressBar: {fileID: 0}
+  AntiVirusProgressBar: {fileID: 1754567726}
   CurupttertionObject: {fileID: 1072226131}
   deleleObject: {fileID: 2002722065}
   BitCounter: {fileID: 946367067}
@@ -6899,7 +6899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1754567727
 RectTransform:
   m_ObjectHideFlags: 0
