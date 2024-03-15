@@ -5236,7 +5236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
       propertyPath: GoodLines.Array.size
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
       propertyPath: WhatLines.Array.size
@@ -5244,7 +5244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
       propertyPath: AhhhhhLines.Array.size
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
       propertyPath: GoodLines.Array.data[0]
@@ -5352,6 +5352,10 @@ PrefabInstance:
         it?"
       objectReference: {fileID: 0}
     - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[15]
+      value: Subscribe to NotAWeebGuy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
       propertyPath: WhatLines.Array.data[10]
       value: Oh hello! No, not you user, the one behind you!
       objectReference: {fileID: 0}
@@ -5406,7 +5410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
       propertyPath: CorruptedLines.Array.size
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
       propertyPath: AhhhhhLines.Array.data[10]
@@ -5442,6 +5446,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
       propertyPath: AhhhhhLines.Array.data[18]
+      value: Subscribe to NotAWeebGuy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[19]
       value: 'Tick tock Tick tock Tick tock Tick tock Tick tock Tick tock '
       objectReference: {fileID: 0}
     - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
@@ -5516,6 +5524,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
       propertyPath: CorruptedLines.Array.data[17]
+      value: Subscribe to NotAWeebGuy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[18]
       value: SQUAWK!
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -6651,7 +6663,7 @@ MonoBehaviour:
   damageAmount: 10
   CorruptionRate: 1
   CorruptionState: 0
-  deleteRate: 1
+  deleteRate: 0
   DeleteState: 0
   AntiVirusDownload: 0
   AntiVirusDownloadRate: 0
