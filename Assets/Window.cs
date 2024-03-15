@@ -52,11 +52,11 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
     public void Ruin(int ID)
     {
         parent.gameObject.GetComponent<DrawWindow>().curruptableFiles.Remove(ID);
-        Debug.Log($"{parent.gameObject.GetComponent<DrawWindow>().curruptableFiles.Count}");
+        //Debug.Log($"{parent.gameObject.GetComponent<DrawWindow>().curruptableFiles.Count}");
         var file = parent.gameObject.GetComponent<DrawWindow>().curruptableFiles.ElementAt(Random.Range(0, parent.gameObject.GetComponent<DrawWindow>().curruptableFiles.Count));
         file.Value.type = "Txt-C";
         file.Value.isCurrupting = true;
-        Debug.Log($"{file.Value.ID}, {file.Key}, {file.Value.name}");
+        //Debug.Log($"{file.Value.ID}, {file.Key}, {file.Value.name}");
     }
 
     public void Spread(int ID)
@@ -129,6 +129,10 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
                     buttons[count].gameObject.GetComponent<Image>().sprite = sprites[3];
                     buttons[count].gameObject.GetComponent<Button>().interactable = false;
                     break;
+                case "Deleted":
+                    buttons[count].gameObject.GetComponent<Image>().sprite = sprites[4];
+                    buttons[count].gameObject.GetComponent<Button>().interactable = false;
+                    break;
             }
             count++;
         }
@@ -140,6 +144,11 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
         {
             gameManager.UpdateMoney();
             if(Random.Range(0,2) == 0)file.FileManager.GetComponent<DrawWindow>().spread();
+            if (file.curruptTimer == 100)
+            {
+                file.curruptionPercent = 0;
+                file.curruptTimer = 40;
+            }
         }
         buttons[count].gameObject.GetComponent<Button>().interactable = false;
         file.type = "Txt";

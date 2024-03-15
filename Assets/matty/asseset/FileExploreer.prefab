@@ -2959,6 +2959,9 @@ MonoBehaviour:
   offset: {x: 0, y: 0}
   canvas: {fileID: 0}
   XButton: {fileID: 5563917977935828412}
+  FileManager: {fileID: 0}
+  parent: {fileID: 0}
+  gameManager: {fileID: 0}
   buttons:
   - {fileID: 8224354735025270564}
   - {fileID: 5506950264039233134}
@@ -2980,6 +2983,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fd90824774973bb458e4ad5392c7c275, type: 3}
   - {fileID: 21300000, guid: 8f60c56266c0c80429b506bafdf7ce58, type: 3}
   - {fileID: 21300000, guid: 551e1ee27f5aa31418d3f77f39e1a271, type: 3}
+  - {fileID: 21300000, guid: 694806594b79e60498451fa68b729322, type: 3}
 --- !u!1 &6452522425182696926
 GameObject:
   m_ObjectHideFlags: 0
