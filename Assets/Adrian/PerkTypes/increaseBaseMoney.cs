@@ -8,6 +8,6 @@ public class increaseBaseMoney : UISkillInteraction
     public override void TriggerPerkEffect()
     {
         base.TriggerPerkEffect();
-        gameManager.UpdateMoney(amount);
+        gameManager.UpdateBaseAmountOfMoney(amount);
     }
 }

@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     public GameObject deleleObject;
     public GameObject BitCounter;
 
+    private float PercentOfVirusToStartDownload;
+
     private void Awake()
     {
         difficultyTransfer diffSettings = GameObject.FindAnyObjectByType<difficultyTransfer>();
@@ -74,6 +76,7 @@ public class GameManager : MonoBehaviour
         updateCururproru();
         updateDelelete();
         updateBits();
+        CheckIfDownloadNeedsToStart();
     }
 
     public void UpdateCorruptionRate(float value)
@@ -135,6 +138,10 @@ public class GameManager : MonoBehaviour
     {
         AntiVirusState += value;
     }
+    public void UpdateBaseAmountOfMoney(int value)
+    {
+        baseMoneyGain += value;
+    }
 
     public void StartDownload() 
     { 
@@ -174,6 +181,14 @@ public class GameManager : MonoBehaviour
         BitCounter.GetComponent<TMP_Text>().text = $"{money}";
     }
 
+    private void CheckIfDownloadNeedsToStart()
+    {
+        if (CorruptionState >=  PercentOfVirusToStartDownload)
+        {
+            DownloadObject.SetActive(true);
+        }
+    }
+
 
     public void SetGameDifficulty(int Diff)
     {
@@ -184,18 +199,21 @@ public class GameManager : MonoBehaviour
                 AntiVirusDownloadRate = 1.5f;
                 antiVirusKillRate = 1.0f;
                 Debug.Log("the game difficulty is easy");
+                PercentOfVirusToStartDownload = 75.0f;
                 break; 
             
             case 2:
                 AntiVirusDownloadRate = 3.0f;
                 antiVirusKillRate = 2.0f;
                 Debug.Log("the game difficulty is normal");
+                PercentOfVirusToStartDownload = 50.0f;
                 break; 
             
             case 3:
                 AntiVirusDownloadRate = 7.0f;
                 antiVirusKillRate = 4.0f;
                 Debug.Log("the game difficulty is hard");
+                PercentOfVirusToStartDownload = 25.0f;
                 break;
         }
     }
