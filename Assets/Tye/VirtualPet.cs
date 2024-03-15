@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEditor.Animations;
 
 public class VirtualPet : MonoBehaviour
 {
@@ -12,17 +15,30 @@ public class VirtualPet : MonoBehaviour
     public float minDelay = 1f;
     public float maxDelay = 5f;
 
+    public float ZStart = 0f;
+
+    public Transform petTransform;
+    public Vector3 textOffset;
+    
+    public TMP_Text messageText;
+
     private Vector3 targetPosition; // Random target position within the movement area
+    private RectTransform messageRectTransform;
+    public Animator animator;
 
     void Start()
-    {
+    {       
+        ZStart = transform.position.z;
+        messageRectTransform = messageText.GetComponent<RectTransform>();
+
         StartCoroutine(MoveDelay());
     }
 
     void Update()
     {
         MoveTowardsTarget();
-        // CheckReachedDestination();
+        UpdateMessagePosition();
+        CheckReachedDestination();
     }
 
     void SetRandomTargetPosition()
@@ -34,16 +50,46 @@ public class VirtualPet : MonoBehaviour
 
     void MoveTowardsTarget()
     {
+        animator.SetBool("isWalking?", true);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
+        float temp = targetPosition.x - transform.position.x;
+        if (temp >= 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().flipX= false;
+        }
+        transform.position = new Vector3(transform.position.x, transform.position.y , ZStart);
     }
 
-   /* void CheckReachedDestination()
+    void CheckReachedDestination()
     {
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
-            SetRandomTargetPosition();
+            animator.SetBool("isWalking?", false);
         }
-    }*/
+    }
+
+    private void UpdateMessagePosition()
+    {
+        if (petTransform != null)
+        {
+            Vector3 worldPosition = petTransform.position + textOffset;
+            Vector2 screenPosition = new Vector2(worldPosition.x, worldPosition.y);//Camera.main.WorldToScreenPoint(worldPosition);
+            messageRectTransform.position = screenPosition;
+        }
+        else
+        { 
+            messageText.gameObject.SetActive(false);
+        }
+    }
+
+    private void UpdateMessageText(string message)
+    {
+        messageText.text = message;
+    }
 
     // Draw the movement area in the scene for visualization purposes
     private void OnDrawGizmosSelected()
@@ -57,23 +103,54 @@ public class VirtualPet : MonoBehaviour
 
         while (true) 
         {
-            int randomChance = Random.Range(0, 3);
+            int randomChance = Random.Range(0, 5);
 
             switch (randomChance)
             {
                 case 0:
+                    UpdateMessageText("");
+                    Debug.Log("Nothing");
                     yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
+                    animator.SetBool("isWalking?", false);
+                    animator.SetBool("isTalking?", false);
                     SetRandomTargetPosition();
                     break;
 
                 case 1:
-                    Debug.Log("Speech");
+                    animator.SetBool("isTalking?", true);
+                    UpdateMessageText("Balls");
+                    Debug.Log("Balls");
                     yield return new WaitForSeconds(5);
-                    SetRandomTargetPosition();
+                    animator.SetBool("isWalking?", false);
+                    //SetRandomTargetPosition();
+                    UpdateMessageText("");
                     break;
 
                 case 2:
+                    animator.SetBool("isTalking?", true);
+                    Debug.Log("I know");
+                    UpdateMessageText("I know where you sleep at night...");
                     yield return new WaitForSeconds(5);
+                    animator.SetBool("isWalking?", false);
+                    //SetRandomTargetPosition();
+                    UpdateMessageText("");
+                    break;
+
+                case 3:
+                    UpdateMessageText("");
+                    Debug.Log("Nothing 2");
+                    yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
+                    animator.SetBool("isWalking?", false);
+                    animator.SetBool("isTalking?", false);
+                    SetRandomTargetPosition();
+                    break;
+
+                case 4:
+                    UpdateMessageText("Cool Bird fact! I see you.");
+                    Debug.Log("Oh yeah");
+                    yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
+                    animator.SetBool("isWalking?", false);
+                    animator.SetBool("isTalking?", false);
                     SetRandomTargetPosition();
                     break;
             }
