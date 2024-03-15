@@ -15,6 +15,16 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("GameScreen");
     }
 
+    public void LoadDifficultyMenu()
+    {
+        SceneManager.LoadScene("DifficultyMenu");
+    }
+
+    public void LoadSettings()
+    {
+        SceneManager.LoadScene("SettingsMenu");
+    }
+
     public void ExitGame()
     {
         Application.Quit();

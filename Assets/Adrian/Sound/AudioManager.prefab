@@ -81,6 +81,14 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  music: []
+  music:
+  - name: BGMusic
+    clip: {fileID: 8300000, guid: 1cbec290e4cd2b14ba957c045369c099, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
   distortionFilter: {fileID: 0}
   distortion: 0
+  MusicGroup: {fileID: 7791361936696976578, guid: 1533cfb9a05963d499258a4efa11ef1f, type: 2}
+  SFXGroup: {fileID: -3710474448029955284, guid: 1533cfb9a05963d499258a4efa11ef1f, type: 2}
