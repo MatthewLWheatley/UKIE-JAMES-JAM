@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     
     public float maxAntiVirusState = 100.0f;
 
+    public float SpreadRate = 4.0f;
+
 
     public float money;
     public float baseMoneyGain = 16.0f;
@@ -112,7 +114,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateMoney()
     {
-        money += baseMoneyGain * moneyGainRate / 100.0f;
+        money += baseMoneyGain * (moneyGainRate / 100.0f);
         Debug.Log("moneys");
     }
 

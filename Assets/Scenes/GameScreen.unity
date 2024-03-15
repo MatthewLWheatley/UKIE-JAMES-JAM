@@ -6671,7 +6671,8 @@ MonoBehaviour:
   antiVirusKillRate: 1
   AntiVirusState: 0
   maxAntiVirusState: 100
-  money: 10000
+  SpreadRate: 4
+  money: 100
   baseMoneyGain: 10
   moneyGainRate: 100
   DownloadObject: {fileID: 485664651}
