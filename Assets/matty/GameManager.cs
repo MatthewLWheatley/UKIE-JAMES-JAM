@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     public GameObject CurupttertionObject;
     public GameObject deleleObject;
     public GameObject BitCounter;
+    public GameObject FileManager;
 
     private float PercentOfVirusToStartDownload;
 
@@ -107,6 +108,7 @@ public class GameManager : MonoBehaviour
     public void UpdateMoney()
     {
         money += baseMoneyGain * moneyGainRate / 100.0f;
+        Debug.Log("moneys");
     }
 
     public void UpdateMoneyGainRate(float value)
@@ -163,7 +165,7 @@ public class GameManager : MonoBehaviour
         {
             CurupttertionObject.gameObject.transform.GetChild(0).GetComponent<Slider>().value = CorruptionState;
         }
-        CorruptionState += CorruptionRate*Time.deltaTime;
+        CorruptionState = FileManager.GetComponent<DrawWindow>().corruptCounter;
     }
 
     public void updateDelelete()

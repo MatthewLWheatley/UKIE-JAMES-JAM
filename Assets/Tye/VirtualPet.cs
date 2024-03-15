@@ -203,7 +203,7 @@ public class VirtualPet : MonoBehaviour
             {
                 case 0:
                     UpdateMessageText("");
-                    Debug.Log("Nothing");
+                    //Debug.Log("Nothing");
                     yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
                     animator.SetBool("isWalking?", false);
                     animator.SetBool("isTalking?", false);
@@ -213,7 +213,7 @@ public class VirtualPet : MonoBehaviour
                 case 1:
                     animator.SetBool("isTalking?", true);
                     UpdateMessageText("Balls");
-                    Debug.Log("Balls");
+                    //Debug.Log("Balls");
                     yield return new WaitForSeconds(5);
                     animator.SetBool("isWalking?", false);
                     //SetRandomTargetPosition();
@@ -222,7 +222,7 @@ public class VirtualPet : MonoBehaviour
 
                 case 2:
                     animator.SetBool("isTalking?", true);
-                    Debug.Log("I know");
+                    //Debug.Log("I know");
                     UpdateMessageText("I know where you sleep at night...");
                     yield return new WaitForSeconds(5);
                     animator.SetBool("isWalking?", false);
@@ -232,7 +232,7 @@ public class VirtualPet : MonoBehaviour
 
                 case 3:
                     UpdateMessageText("");
-                    Debug.Log("Nothing 2");
+                    //Debug.Log("Nothing 2");
                     yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
                     animator.SetBool("isWalking?", false);
                     animator.SetBool("isTalking?", false);
@@ -241,7 +241,7 @@ public class VirtualPet : MonoBehaviour
 
                 case 4:
                     UpdateMessageText("Cool Bird fact! I see you.");
-                    Debug.Log("Oh yeah");
+                    //Debug.Log("Oh yeah");
                     yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
                     animator.SetBool("isWalking?", false);
                     animator.SetBool("isTalking?", false);

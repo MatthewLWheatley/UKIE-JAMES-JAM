@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -14,6 +16,8 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
     public Canvas canvas;
     public Button XButton;
 
+    public GameObject parent;
+
     public GameManager gameManager;
 
     public List<Button> buttons;
@@ -22,8 +26,11 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
 
     public List<Sprite> sprites = new List<Sprite>();
 
+    public File oldFile = null;
+
     private void Start()
     {
+        parent = this.transform.parent.gameObject;
         rectTransform = this.GetComponent<RectTransform>();
 
         if (XButton == null)
@@ -31,6 +38,30 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
             XButton = GetComponent<Button>();
         }
 
+        foreach (var file in thisFile.children)
+        {
+            file.parent = gameObject;
+        }
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    public void Ruin(int ID)
+    {
+        parent.gameObject.GetComponent<DrawWindow>().curruptableFiles.Remove(ID);
+        Debug.Log($"{parent.gameObject.GetComponent<DrawWindow>().curruptableFiles.Count}");
+        var file = parent.gameObject.GetComponent<DrawWindow>().curruptableFiles.ElementAt(Random.Range(0, parent.gameObject.GetComponent<DrawWindow>().curruptableFiles.Count));
+        file.Value.type = "Txt-C";
+        file.Value.isCurrupting = true;
+        Debug.Log($"{file.Value.ID}, {file.Key}, {file.Value.name}");
+    }
+
+    public void Spread(int ID)
+    {
+        
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -61,7 +92,7 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
 
     public void Minamize()
     {
-        Debug.Log("fick");
+        //Debug.Log("fick");
         Destroy(this.gameObject);
     }
 
@@ -75,6 +106,7 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
         int count = 0;
         foreach (var file in thisFile.children)
         {
+            file.parent = this.gameObject;
             buttons[count].gameObject.SetActive(true);
             buttons[count].transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = file.name;
             switch (file.type)
@@ -104,8 +136,9 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
 
     public void gainMoney(File file, int count) 
     {
-        gameManager.UpdateMoney();
+        if(file.type == "Txt-C")gameManager.UpdateMoney();
         buttons[count].gameObject.GetComponent<Button>().interactable = false;
         file.type = "Txt";
+        this.DrawFiles();
     }
 }
