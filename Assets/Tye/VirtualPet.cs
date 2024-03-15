@@ -52,6 +52,15 @@ public class VirtualPet : MonoBehaviour
     {
         animator.SetBool("isWalking?", true);
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
+        float temp = targetPosition.x - transform.position.x;
+        if (temp >= 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().flipX= false;
+        }
         transform.position = new Vector3(transform.position.x, transform.position.y , ZStart);
     }
 
@@ -94,12 +103,13 @@ public class VirtualPet : MonoBehaviour
 
         while (true) 
         {
-            int randomChance = Random.Range(0, 3);
+            int randomChance = Random.Range(0, 5);
 
             switch (randomChance)
             {
                 case 0:
                     UpdateMessageText("");
+                    Debug.Log("Nothing");
                     yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
                     animator.SetBool("isWalking?", false);
                     animator.SetBool("isTalking?", false);
@@ -109,6 +119,7 @@ public class VirtualPet : MonoBehaviour
                 case 1:
                     animator.SetBool("isTalking?", true);
                     UpdateMessageText("Balls");
+                    Debug.Log("Balls");
                     yield return new WaitForSeconds(5);
                     animator.SetBool("isWalking?", false);
                     //SetRandomTargetPosition();
@@ -117,11 +128,30 @@ public class VirtualPet : MonoBehaviour
 
                 case 2:
                     animator.SetBool("isTalking?", true);
+                    Debug.Log("I know");
                     UpdateMessageText("I know where you sleep at night...");
                     yield return new WaitForSeconds(5);
                     animator.SetBool("isWalking?", false);
                     //SetRandomTargetPosition();
                     UpdateMessageText("");
+                    break;
+
+                case 3:
+                    UpdateMessageText("");
+                    Debug.Log("Nothing 2");
+                    yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
+                    animator.SetBool("isWalking?", false);
+                    animator.SetBool("isTalking?", false);
+                    SetRandomTargetPosition();
+                    break;
+
+                case 4:
+                    UpdateMessageText("Cool Bird fact! I see you.");
+                    Debug.Log("Oh yeah");
+                    yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
+                    animator.SetBool("isWalking?", false);
+                    animator.SetBool("isTalking?", false);
+                    SetRandomTargetPosition();
                     break;
             }
         }
