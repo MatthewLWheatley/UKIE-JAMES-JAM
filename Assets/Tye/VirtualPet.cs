@@ -21,6 +21,7 @@ public class VirtualPet : MonoBehaviour
     public Vector3 textOffset;
     
     public TMP_Text messageText;
+    public GameObject MessagePosRef;
 
     private Vector3 targetPosition; // Random target position within the movement area
     private RectTransform messageRectTransform;
@@ -88,7 +89,8 @@ public class VirtualPet : MonoBehaviour
             Vector2 screenPosition = new Vector2(worldPosition.x, worldPosition.y);//Camera.main.WorldToScreenPoint(worldPosition);
             messageRectTransform.position = screenPosition;
 
-            messageRectTransform.position = new Vector3(screenPosition.x,screenPosition.y,textOffset.z);
+            MessagePosRef.transform.position = new Vector3(screenPosition.x, screenPosition.y, textOffset.z);
+            //messageRectTransform.position = new Vector3(screenPosition.x,screenPosition.y,textOffset.z);
 
             messageRectTransform.SetAsLastSibling();
         }
@@ -103,6 +105,22 @@ public class VirtualPet : MonoBehaviour
         messageText.text = message;
     }
 
+
+    private void HideSpeechBubble()
+    {
+        var tempColour = MessagePosRef.GetComponent<Image>().color;
+        tempColour.a = 0;
+
+        MessagePosRef.GetComponent<Image>().color = tempColour;
+    }
+
+    private void ShowSpeechBubble()
+    {
+        var tempColour = MessagePosRef.GetComponent<Image>().color;
+        tempColour.a = 1;
+
+        MessagePosRef.GetComponent<Image>().color = tempColour;
+    }
     // Draw the movement area in the scene for visualization purposes
     private void OnDrawGizmosSelected()
     {
@@ -119,6 +137,7 @@ public class VirtualPet : MonoBehaviour
             //move somewhere
             case 0:
                 UpdateMessageText("");
+                HideSpeechBubble();
                 animator.SetBool("isWalking?", false);
                 animator.SetBool("isTalking?", false);
                 SetRandomTargetPosition();
@@ -126,12 +145,13 @@ public class VirtualPet : MonoBehaviour
             //chat some shit
             case 1:
                 animator.SetBool("isTalking?", true);
-                UpdateMessageText("Balls");
-                Debug.Log("Balls");
+                ShowSpeechBubble();
+                chooseRandomLines();
                 break;
             //be an idle idol
             case 2:
                 UpdateMessageText("");
+                HideSpeechBubble();
                 targetPosition = transform.position;
             break;
 
@@ -143,6 +163,32 @@ public class VirtualPet : MonoBehaviour
 
     private void chooseRandomLines()
     {
+        float temp = gameManager.CorruptionState;
+        int randVoiceLine;
+        if(temp < 25)
+        {
+            //goodlines
+            randVoiceLine = Random.Range(0, GoodLines.Length - 1);
+            UpdateMessageText(GoodLines[randVoiceLine]);
+        }
+        else if(temp >= 25 && temp < 50)
+        {
+            //what lines
+            randVoiceLine = Random.Range(0, WhatLines.Length - 1);
+            UpdateMessageText(WhatLines[randVoiceLine]);
+        }
+        else if(temp >= 50 && temp < 75)
+        {
+            //corrupted lines
+            randVoiceLine = Random.Range(0, CorruptedLines.Length - 1);
+            UpdateMessageText(CorruptedLines[randVoiceLine]);
+        }
+        else
+        {
+            //ahhhhhhhhhh
+            randVoiceLine = Random.Range(0, AhhhhhLines.Length - 1);
+            UpdateMessageText(AhhhhhLines[randVoiceLine]);
+        }
        
     }
 

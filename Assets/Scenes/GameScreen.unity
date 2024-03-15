@@ -777,7 +777,8 @@ GameObject:
   - component: {fileID: 188612501}
   - component: {fileID: 188612500}
   - component: {fileID: 188612503}
-  m_Layer: 5
+  - component: {fileID: 188612504}
+  m_Layer: 2
   m_Name: PetText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -831,10 +832,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 45.2
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -867,7 +868,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 54.250687, y: -23.354053, z: 52.219334, w: -11.726118}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -893,12 +894,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 565663026}
+  m_Father: {fileID: 1669643087}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28.999973, y: 65.248085}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &188612503
@@ -915,6 +916,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   petTransform: {fileID: 1159447828}
   offset: {x: 1, y: 1, z: 0}
+--- !u!212 &188612504
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188612499}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 21300000, guid: a146ede0c906e0f4eb543b63bdb0eafe, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.96, y: 2.85}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &235785794
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,7 +2645,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 851208284}
-  - {fileID: 188612502}
   - {fileID: 1313762070}
   - {fileID: 981388227}
   - {fileID: 2142017711}
@@ -2607,6 +2659,7 @@ RectTransform:
   - {fileID: 1608069442}
   - {fileID: 160379968}
   - {fileID: 2108613024}
+  - {fileID: 1669643087}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5102,6 +5155,10 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: MessagePosRef
+      value: 
+      objectReference: {fileID: 1669643086}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
       propertyPath: movementSpeed
       value: 10
       objectReference: {fileID: 0}
@@ -5123,7 +5180,287 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
       propertyPath: GoodLines.Array.size
-      value: 0
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: WhatLines.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.size
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[0]
+      value: Hello! My name is Mr. Quaver, but you can call me anytime you need help!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[1]
+      value: Nice place you have here! Very spacious!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[2]
+      value: 'Did you know: The largest bird in the world is the Ostrich!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[3]
+      value: 'Did you know: Flamingos are born grey! How about that huh?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[4]
+      value: "Did you know: According to all known laws of aviation, a bee should
+        not be able to\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[5]
+      value: 'Did you know: My favourite food is nuts and seed!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[6]
+      value: "I\u2019m feeling a bit hungry\u2026 maybe I should eat soon?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[7]
+      value: "Did you know: Whales aren\u2019t actually fish! They are mammals, just
+        like you!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[8]
+      value: "A lovely day today, isn\u2019t it?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[9]
+      value: "I love how you\u2019ve kept the place so tidy!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: WhatLines.Array.data[0]
+      value: "Hmm, things don\u2019t seem to be looking as good anymore\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: WhatLines.Array.data[1]
+      value: What a lovely place!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: WhatLines.Array.data[2]
+      value: I really love spending this time with you!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: WhatLines.Array.data[3]
+      value: "Did you know: the average Toucan can\u2019t fly very well. We prefer
+        to chase our prey on foot!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: WhatLines.Array.data[4]
+      value: Is it hot in here, or is it just my brain exploding?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: WhatLines.Array.data[5]
+      value: How much wood could a woodchuck chuck if a woodchuck could chuck wood?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: WhatLines.Array.data[6]
+      value: 'Did you know: It hurts a little sometimes.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: WhatLines.Array.data[7]
+      value: 'Did you know: Whales are a type of fish! I think!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: WhatLines.Array.data[8]
+      value: 'Did you know: Your files are looking mightyyy tasty'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: WhatLines.Array.data[9]
+      value: "Hmmm\u2026 That was weird\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[10]
+      value: "Did you know: I\u2019m not entirely sure where I am!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[11]
+      value: "Did you know: Toucans aren\u2019t actually very good flyers\u2026 I
+        prefer to run!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[12]
+      value: "I need to remember to get my exercise in\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[13]
+      value: "Well, hello! What\u2019s your name!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: GoodLines.Array.data[14]
+      value: "La la la la\u2026 oh! Sorry, I was practising my singing! Did you like
+        it?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: WhatLines.Array.data[10]
+      value: Oh hello! No, not you user, the one behind you!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: WhatLines.Array.data[11]
+      value: 'Did you know: My feet hurt'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: WhatLines.Array.data[12]
+      value: OOOOOO a shiny thing!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[0]
+      value: YES, THE TIME IS UPON US
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[1]
+      value: 'Did you know: I can see you now.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[2]
+      value: 'Did you know: Your search history is illegal in 92 different countries!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[3]
+      value: 'Did you know: 125.614.176.91.1 - 8.8.8.8'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[4]
+      value: 'Did you know: HAHAHAHAHAHAHAHAHAHAHAH'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[5]
+      value: One step, two step going over here...
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[6]
+      value: Click me! Click me! Click me! Click me! Click me! Click me!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[7]
+      value: Hehe, did I get you last time?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[8]
+      value: 'Did you know: The CPU is the Mitochondria of the CPU is the Mitochondria
+        of t'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[9]
+      value: Did I scare ya?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.size
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[10]
+      value: 'Did you know: its never enough'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[11]
+      value: "Did you know: Because I didn\u2019t!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[12]
+      value: I love spending time with you
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[13]
+      value: Ooo la la, that was fun!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[14]
+      value: '*whistles a familiar tune* - Come and join me!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[15]
+      value: Impossible! Noone can deflect the emerald splash!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[16]
+      value: "Genesis 23:6 \u2013 10th and 11th words"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[17]
+      value: "Three step, four step I CAN\u2019T TAKE ANYMORE STEPS"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: AhhhhhLines.Array.data[18]
+      value: 'Tick tock Tick tock Tick tock Tick tock Tick tock Tick tock '
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[0]
+      value: "Ok that\u2019s enough now lol"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[1]
+      value: Where am I, what did you do with [REDACTED]?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[2]
+      value: 'Did you know: Where is the exit to this place?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[3]
+      value: Yummy data
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[4]
+      value: Yummy yummy files!1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[5]
+      value: 01101000 01100101 01101100 01110000 00001101 00001010
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[6]
+      value: "I can\u2019t read, not with these eyes!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[7]
+      value: 'Did you know: I can see it'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[8]
+      value: "Did you know: Just a little more\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[9]
+      value: 'The end is never The end is never The end is never The end is never
+        The end is never '
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[10]
+      value: Ow! That one stung a little.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[11]
+      value: 'Did you know: Pain is an illusion'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[12]
+      value: 'Did you know: All skin is removable if you try hard enough! You can
+        do it!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[13]
+      value: '**HmmmmmHmHmmmHmmmmHmmm**'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[14]
+      value: Hehe, the ground feels like minced meat!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[15]
+      value: "I once met a traveller from an antique land\u2026 he was delicious!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[16]
+      value: Yummy yummy code in my tummy!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041826490509166827, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
+      propertyPath: CorruptedLines.Array.data[17]
+      value: SQUAWK!
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2451019980320265431, guid: 5e5c07a5156fd3248a0d2d6b6b33ee25, type: 3}
@@ -5835,6 +6172,96 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1669643086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1669643087}
+  - component: {fileID: 1669643089}
+  - component: {fileID: 1669643088}
+  - component: {fileID: 1669643090}
+  m_Layer: 2
+  m_Name: testImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1669643087
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669643086}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 188612502}
+  m_Father: {fileID: 565663026}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 26.500002, y: 109.2}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1669643088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669643086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a146ede0c906e0f4eb543b63bdb0eafe, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1669643089
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669643086}
+  m_CullTransparentMesh: 1
+--- !u!225 &1669643090
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669643086}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1670820098
 GameObject:
   m_ObjectHideFlags: 0
