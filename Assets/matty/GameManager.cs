@@ -244,7 +244,7 @@ public class GameManager : MonoBehaviour
 
     private void CheckDeletionRate()
     {
-       if(DeleteState >= 100)
+       if(DeleteState >= 80)
         {
             //win the game
             WinTheGame();

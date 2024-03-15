@@ -20,6 +20,7 @@ public class DrawWindow : MonoBehaviour
     public Dictionary<int, File> curruptableFiles = new Dictionary<int, File>();
     public Dictionary<int, File> deletableFiles = new Dictionary<int, File>();
     public List<Sprite> sprites = new List<Sprite>();
+    public List<int> deletedFiles = new List<int>();
 
     public GameObject windowPreFab;
     public GameObject gamemanager;
@@ -56,7 +57,7 @@ public class DrawWindow : MonoBehaviour
                 file.increasedeletion(deletionRate);
                 //Debug.Log($"{deletionRate}");
             }
-            file.delete();
+            file.delete(file);
         }
         if (temp)
         {
@@ -66,7 +67,7 @@ public class DrawWindow : MonoBehaviour
         }
         
         corruptCounter = 100.0f - corruptionValuse.Count();
-        deletionCounter = deletableFiles.Count();
+        deletionCounter = deletedFiles.Count(); // deletableFiles.Count();
         //Debug.Log(deletableFiles.Count());   
         //Debug.Log(deletionCounter.ToString());   
     }
@@ -105,6 +106,7 @@ public class DrawWindow : MonoBehaviour
 
     public void delete(int ID) 
     {
+        if(!deletedFiles.Contains(ID)) deletedFiles.Add(ID);
         Debug.Log("deleted file");
     }
 
@@ -821,7 +823,7 @@ public class File
         curruptionPercent = 0;
     }
 
-    public void delete() 
+    public void delete(File file) 
     {
         isDeleting = true;
         //deletionPercent = 0;
@@ -830,6 +832,7 @@ public class File
             type = "Deleted";
             FileManager.GetComponent<DrawWindow>().delete(ID);
             if (parent != null) parent.GetComponent<Window>().DrawFiles();
+            
         }
     }
 
@@ -851,13 +854,13 @@ public class File
         if (curruptionPercent > curruptTimer)
         {
             type = "Runied";
-            delete();
+            delete(this);
             FileManager.GetComponent<DrawWindow>().Ruin(ID);
             if (parent != null) parent.GetComponent<Window>().DrawFiles();
         }
         if (type == "Txt" && isCurrupting == true)
         {
-            int rndInt = Random.Range(0, 2500);
+            int rndInt = Random.Range(0, 250);
             if (rndInt == 0)
             {
                 type = "Txt-C";
