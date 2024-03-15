@@ -102,10 +102,10 @@ public class DrawWindow : MonoBehaviour
         //Debug.Log($"{file.Value.ID}, {file.Key}, {file.Value.name}");
     }
 
-    public void delete(int ID) 
-    {
-        Debug.Log("deleted file");
-    }
+    //public void delete(int ID) 
+    //{
+    //    Debug.Log("deleted file");
+    //}
 
     public void spread() 
     {
@@ -827,7 +827,7 @@ public class File
         if (deletionPercent > 100)
         {
             type = "Deleted";
-            FileManager.GetComponent<DrawWindow>().delete(ID);
+            //FileManager.GetComponent<DrawWindow>().delete(ID);
             if (parent != null) parent.GetComponent<Window>().DrawFiles();
         }
     }
