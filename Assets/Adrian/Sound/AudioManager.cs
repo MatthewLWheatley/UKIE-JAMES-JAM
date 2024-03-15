@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     public AudioDistortionFilter distortionFilter;
     public float distortion;
+    public AudioMixerGroup MusicGroup;
+    public AudioMixerGroup SFXGroup;
 
     private void Awake()
     {
@@ -32,6 +34,7 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = SFXGroup;
         }
 
         foreach (Sound s in music)
@@ -41,13 +44,20 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = MusicGroup;
         }
 
         distortionFilter = gameObject.AddComponent<AudioDistortionFilter>();
         distortionFilter.distortionLevel = distortion;
     }
 
-   public void PlaySFX (string name)
+
+    private void Start()
+    {
+        PlayMusic("BGMusic");
+    }
+
+    public void PlaySFX (string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if(s == null)
