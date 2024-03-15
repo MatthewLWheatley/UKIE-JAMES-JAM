@@ -1,44 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     HealthBar healthBar;
     public float damageAmount = 10.0f;
     //%
-    public float currentCorruptionRate = 100.0f;
+    public float CorruptionRate = 0.0f;
 
-    public float currentCorruptionState = 0.0f;
+    public float CorruptionState = 0.0f;
     //%
-    //public float currentCorruptionSpreadChance = 10.0f;//
+    //public float CorruptionSpreadChance = 10.0f;//
     //%
     public float deleteRate;
     //%
     //public float deleteChance;//
     //%
-    public float currentDeleteState;
+    public float DeleteState;
     
     //%
-    public float currentAntiVirusDownload = 0.0f;
+    public float AntiVirusDownload = 0.0f;
     //%
-    public float currentAntiVirusDownloadRate = 0.0f;
+    public float AntiVirusDownloadRate = 0.0f;
     //%
     public float detectRate;
     //%
     public float antiVirusKillRate = 1.0f;
     //%
-    public float currentAntiVirusState = 0.0f;
+    public float AntiVirusState = 0.0f;
     
     public float maxAntiVirusState = 100.0f;
 
 
-    public int money;
+    public float money;
+    public float baseMoneyGain = 10.0f;
     //%
     public float moneyGainRate = 100.0f;
 
-    
-    
+    public GameObject DownloadObject;
+    public GameObject CurupttertionObject;
+    public GameObject deleleObject;
+    public GameObject BitCounter;
+
     private void Start()
     {
         healthBar = GetComponent<HealthBar>();
@@ -48,26 +55,22 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            healthBar.ModifyHealth(damageAmount);
+            StartDownload();
         }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            healthBar.ModifyDetection(damageAmount);
-        }
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            healthBar.ModifyInteg(damageAmount);
-        }
+        UpdateDownload();
+        updateCururproru();
+        updateDelelete();
+        updateBits();
     }
 
     public void UpdateCorruptionRate(float value)
     {
-        currentCorruptionRate += value;
+        CorruptionRate += value;
     }
 
     /*public void UpdateSpreadChance(float value)
     {
-        currentCorruptionSpreadChance += value;
+        CorruptionSpreadChance += value;
     }*/
 
     public void UpdateDamage(float value)
@@ -85,6 +88,11 @@ public class GameManager : MonoBehaviour
         money += value;
     }
 
+    public void UpdateMoney()
+    {
+        money += baseMoneyGain * moneyGainRate / 100.0f;
+    }
+
     public void UpdateMoneyGainRate(float value)
     {
         moneyGainRate += value;
@@ -92,12 +100,12 @@ public class GameManager : MonoBehaviour
 
     public void UpdateAntiVirusDownload(float value)
     {
-        currentAntiVirusDownload += value;
+        AntiVirusDownload += value;
     }
 
     public void UpdateDownloadRate(float value)
     {
-        currentAntiVirusDownloadRate += value;
+        AntiVirusDownloadRate += value;
     }
 
     public void UpdateDetectRate(float value)
@@ -110,14 +118,47 @@ public class GameManager : MonoBehaviour
         antiVirusKillRate += value;
     }
 
-    public void UpdateCurrentAntiVirusState(float value)
+    public void UpdateAntiVirusState(float value)
     {
-        currentAntiVirusState += value;
+        AntiVirusState += value;
     }
 
     public void StartDownload() 
     { 
-    
+        DownloadObject.SetActive(true);
+    }
+
+    public void UpdateDownload() 
+    {
+        if (DownloadObject.activeSelf)
+        {
+            DownloadObject.gameObject.transform.GetChild(0).GetComponent<Slider>().value = AntiVirusDownload;
+            AntiVirusDownload += AntiVirusDownloadRate;
+        }
+    }
+
+    public void updateCururproru() 
+    {
+        if (CurupttertionObject.activeSelf)
+        {
+            CurupttertionObject.gameObject.transform.GetChild(0).GetComponent<Slider>().value = CorruptionState;
+        }
+        CorruptionState += CorruptionRate*Time.deltaTime;
+    }
+
+    public void updateDelelete()
+    {
+        if (deleleObject.activeSelf)
+        {
+            deleleObject.gameObject.transform.GetChild(0).GetComponent<Slider>().value = DeleteState;
+        }
+
+        DeleteState += deleteRate * Time.deltaTime;
+    }
+
+    public void updateBits()
+    {
+        BitCounter.GetComponent<TMP_Text>().text = $"{money}";
     }
 
     /*public void UpdateDeleteChance(float value)

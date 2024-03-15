@@ -14,6 +14,8 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
     public Canvas canvas;
     public Button XButton;
 
+    public GameManager gameManager;
+
     public List<Button> buttons;
 
     public File thisFile = null;
@@ -28,6 +30,7 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
         {
             XButton = GetComponent<Button>();
         }
+
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -77,7 +80,6 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
             switch (file.type)
             {
                 case "Folder":
-
                     buttons[count].gameObject.GetComponent<Image>().sprite = sprites[0];
                     buttons[count].gameObject.GetComponent<Button>().interactable = true;
                     buttons[count].gameObject.GetComponent<Button>().onClick.AddListener(() => transform.parent.GetComponent<DrawWindow>().createWindow(file.ID));
@@ -86,8 +88,24 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
                     buttons[count].gameObject.GetComponent<Image>().sprite = sprites[1];
                     buttons[count].gameObject.GetComponent<Button>().interactable = false;
                     break;
+                case "Txt-C":
+                    buttons[count].gameObject.GetComponent<Image>().sprite = sprites[2];
+                    buttons[count].gameObject.GetComponent<Button>().interactable = true;
+                    buttons[count].gameObject.GetComponent<Button>().onClick.AddListener(() => gainMoney(file,count));
+                    break;
+                case "Runied":
+                    buttons[count].gameObject.GetComponent<Image>().sprite = sprites[3];
+                    buttons[count].gameObject.GetComponent<Button>().interactable = false;
+                    break;
             }
             count++;
         }
+    }
+
+    public void gainMoney(File file, int count) 
+    {
+        gameManager.UpdateMoney();
+        buttons[count].gameObject.GetComponent<Button>().interactable = false;
+        file.type = "Txt";
     }
 }

@@ -9,6 +9,6 @@ public class KnockbackAntiVirusCurrentState : UISkillInteraction
     public override void TriggerPerkEffect()
     {
         base.TriggerPerkEffect();
-        gameManager.UpdateCurrentAntiVirusState(-KnockbackValue);
+        gameManager.UpdateAntiVirusState(-KnockbackValue);
     }
 }

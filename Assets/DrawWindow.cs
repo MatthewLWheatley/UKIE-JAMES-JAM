@@ -1,6 +1,7 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Xml.Linq;
 using TMPro;
@@ -18,13 +19,31 @@ public class DrawWindow : MonoBehaviour
     public List<Sprite> sprites = new List<Sprite>();
 
     public GameObject windowPreFab;
+    public GameObject gamemanager;
 
     public Canvas canvas;
 
+    private void Update()
+    {
+        foreach (var file in curruptableFiles.Values) 
+        {
+            if (file.isCurrupting) 
+            { 
+                
+            }
+        }
+    }
+
     void Start()
     {
+
         createFiles();
         Debug.Log($"{curruptableFiles.Count}");
+        var file = curruptableFiles.ElementAt(Random.Range( 0, files.Count));
+        file.Value.type = "Txt-C";
+        file.Value.isCurrupting = true;
+        Debug.Log($"{file.Value.ID}, {file.Key}, {file.Value.name}");
+
     }
 
     void createFiles() 
@@ -680,11 +699,11 @@ public class DrawWindow : MonoBehaviour
         }
     }
 
-
     public void createWindow(int ID) 
     {
         GameObject clone = Instantiate(windowPreFab, new Vector3(0, 0, 0), Quaternion.identity, this.transform);
         clone.GetComponent<Window>().thisFile = files[ID];
+        clone.GetComponent<Window>().gameManager = gamemanager.GetComponent<GameManager>();
         clone.transform.localScale = new Vector3(1f, 1f, 1f);
         clone.transform.position = new Vector3(clone.transform.position.x, clone.transform.position.y, 0);
         clone.transform.localPosition = new Vector3(clone.transform.localPosition.x, clone.transform.localPosition.y, 0);
