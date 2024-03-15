@@ -31,16 +31,16 @@ public class StatsUpdate : MonoBehaviour
     }
     public void SetStats()
     {
-        CCRate.text = gameManager.currentCorruptionRate.ToString();
-        CCS.text = gameManager.currentCorruptionState.ToString();
+        CCRate.text = gameManager.CorruptionRate.ToString();
+        CCS.text = gameManager.CorruptionState.ToString();
         CKR.text = gameManager.deleteRate.ToString();
-        CKS.text = gameManager.currentDeleteState.ToString();
+        CKS.text = gameManager.DeleteState.ToString();
         CAB.text = gameManager.money.ToString();
         CBM.text = gameManager.moneyGainRate.ToString();
-        CADS.text = gameManager.currentAntiVirusDownload.ToString();
-        CADSpeed.text = gameManager.currentAntiVirusDownloadRate.ToString();
+        CADS.text = gameManager.AntiVirusDownload.ToString();
+        CADSpeed.text = gameManager.AntiVirusDownloadRate.ToString();
         CAKR.text = gameManager.antiVirusKillRate.ToString();
-        CAKS.text = gameManager.currentAntiVirusState.ToString();
+        CAKS.text = gameManager.AntiVirusState.ToString();
         MAKS.text = gameManager.maxAntiVirusState.ToString();
     }
 }

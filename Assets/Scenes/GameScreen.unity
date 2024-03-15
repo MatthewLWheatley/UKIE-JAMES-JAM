@@ -681,7 +681,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2522,9 +2522,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4415,18 +4415,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 10
-  currentCorruptionRate: 100
-  currentCorruptionState: 0
-  deleteRate: 0
-  currentDeleteState: 0
-  currentAntiVirusDownload: 0
-  currentAntiVirusDownloadRate: 0
+  CorruptionRate: 1
+  CorruptionState: 0
+  deleteRate: 1
+  DeleteState: 0
+  AntiVirusDownload: 0
+  AntiVirusDownloadRate: 0
   detectRate: 0
   antiVirusKillRate: 1
-  currentAntiVirusState: 0
+  AntiVirusState: 0
   maxAntiVirusState: 100
-  money: 0
+  money: 1000000
+  baseMoneyGain: 10
   moneyGainRate: 100
+  DownloadObject: {fileID: 485664651}
+  CurupttertionObject: {fileID: 1072226131}
+  deleleObject: {fileID: 2002722065}
+  BitCounter: {fileID: 946367067}
 --- !u!4 &1670820100
 Transform:
   m_ObjectHideFlags: 0
@@ -5295,8 +5300,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1420195076}
   - {fileID: 160549535}
+  - {fileID: 1420195076}
   m_Father: {fileID: 565663026}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5989,6 +5994,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 565663025}
+    - target: {fileID: 4707971770847045959, guid: dd9de3343d346ce4c80a031f98f570e2, type: 3}
+      propertyPath: gamemanager
+      value: 
+      objectReference: {fileID: 1670820098}
     - target: {fileID: 6030588392467623454, guid: dd9de3343d346ce4c80a031f98f570e2, type: 3}
       propertyPath: m_RootOrder
       value: -1
