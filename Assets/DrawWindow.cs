@@ -27,6 +27,7 @@ public class DrawWindow : MonoBehaviour
     public Canvas canvas;
 
     public float corruptCounter = 0;
+    public float deletionCounter = 0;
 
     private void Update()
     {
@@ -44,11 +45,18 @@ public class DrawWindow : MonoBehaviour
                 file.increaseCoruption(corruptionRate);
                 temp = false;
             }
-            if (file.isDeleting) 
+            
+            file.update();
+        }
+        for (int j = 0; j < deletableFiles.Count(); j++) 
+        {
+            var file = deletableFiles.ElementAt(j).Value;
+            if (file.isDeleting)
             {
                 file.increasedeletion(deletionRate);
+                //Debug.Log($"{deletionRate}");
             }
-            file.update();
+            file.delete();
         }
         if (temp)
         {
@@ -57,6 +65,9 @@ public class DrawWindow : MonoBehaviour
         }
         
         corruptCounter = 100.0f - corruptionValuse.Count();
+        deletionCounter = deletableFiles.Count();
+        //Debug.Log(deletableFiles.Count());   
+        //Debug.Log(deletionCounter.ToString());   
     }
 
     void Start()
@@ -73,7 +84,7 @@ public class DrawWindow : MonoBehaviour
             temp.Value.FileManager = this.gameObject;
         }
 
-        Debug.Log($"{curruptableFiles.Count}");
+        //Debug.Log($"{curruptableFiles.Count}");
         var file = curruptableFiles.ElementAt(Random.Range( 0, files.Count));
         file.Value.type = "Txt-C";
         file.Value.isCurrupting = true;
@@ -84,7 +95,7 @@ public class DrawWindow : MonoBehaviour
     {
         deletableFiles.Add(ID, curruptableFiles[ID]);
         curruptableFiles.Remove(ID);
-        Debug.Log($"{curruptableFiles.Count}");
+        //Debug.Log($"{curruptableFiles.Count}");
         //var file = curruptableFiles.ElementAt(Random.Range(0, curruptableFiles.Count));
         //file.Value.type = "Txt-C";
         //file.Value.isCurrupting = true;
@@ -102,7 +113,7 @@ public class DrawWindow : MonoBehaviour
         if (!curruptableFiles.ElementAt(temp).Value.isCurrupting) 
         {
             curruptableFiles.ElementAt(temp).Value.isCurrupting = true;
-            Debug.Log("spreaded");
+            //Debug.Log("spreaded");
         }
     }
 
@@ -812,7 +823,13 @@ public class File
     public void delete() 
     {
         isDeleting = true;
-        deletionPercent = 0;
+        //deletionPercent = 0;
+        if (deletionPercent > 100)
+        {
+            type = "Deleted";
+            FileManager.GetComponent<DrawWindow>().delete(ID);
+            if (parent != null) parent.GetComponent<Window>().DrawFiles();
+        }
     }
 
     public void increaseCoruption(float rate) 
@@ -823,20 +840,20 @@ public class File
     public void increasedeletion(float rate)
     {
         deletionPercent += rate * Time.deltaTime;
+        //Debug.Log(rate);
     }
+
+    public int curruptTimer = 100;
 
     public void update() 
     {
-        if (curruptionPercent > 100)
+        if (curruptionPercent > curruptTimer)
         {
             type = "Runied";
+            delete();
             FileManager.GetComponent<DrawWindow>().Ruin(ID);
             if (parent != null) parent.GetComponent<Window>().DrawFiles();
         }
-        //if (curruptionPercent > 10 && curruptionPercent < 10.5)
-        //{
-        //    if (parent != null) parent.GetComponent<Window>().Spread(ID);
-        //}
         if (type == "Txt" && isCurrupting == true)
         {
             int rndInt = Random.Range(0, 2500);
@@ -844,14 +861,9 @@ public class File
             {
                 type = "Txt-C";
                 if (parent != null) parent.GetComponent<Window>().DrawFiles();
-                Debug.Log("fuck");
+                //Debug.Log("fuck");
             }
         }
-        if (deletionPercent > 100) 
-        {
-            type = "Deleted";
-            FileManager.GetComponent<DrawWindow>().delete(ID);
-            if (parent != null) parent.GetComponent<Window>().DrawFiles();
-        }
+        
     }
 }
