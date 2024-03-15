@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -201,6 +202,7 @@ public class GameManager : MonoBehaviour
         if(AntiVirusState >= 100)
         {
             Debug.Log("YOU LOSe");
+            LoseTheGame();
             //losE the game
         }
     }
@@ -240,15 +242,14 @@ public class GameManager : MonoBehaviour
 
     private void CheckDeletionRate()
     {
-        if(DeleteState >= CorruptionState)
-        {
-            LoseTheGame();
-        }
-        else if(DeleteState >= 100)
+       if(DeleteState >= 100)
         {
             //win the game
+            WinTheGame();
         }
     }
+
+    
 
     private void StartAntiVirus()
     {
@@ -288,6 +289,12 @@ public class GameManager : MonoBehaviour
     public void LoseTheGame()
     {
         //load game over scene
+        SceneManager.LoadScene("LoseScreen");
+    }
+
+    public void WinTheGame()
+    {
+        SceneManager.LoadScene("WinScreen");
     }
     /*public void UpdateDeleteChance(float value)
     {
