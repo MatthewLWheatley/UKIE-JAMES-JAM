@@ -79,6 +79,9 @@ public class VirtualPet : MonoBehaviour
             Vector3 worldPosition = petTransform.position + textOffset;
             Vector2 screenPosition = new Vector2(worldPosition.x, worldPosition.y);//Camera.main.WorldToScreenPoint(worldPosition);
             messageRectTransform.position = screenPosition;
+
+            messageRectTransform.position = new Vector3(screenPosition.x,screenPosition.y,textOffset.z);
+
             messageRectTransform.SetAsLastSibling();
         }
         else

@@ -90,14 +90,4 @@ public class Window : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
             count++;
         }
     }
-
-    public void OpenNewWindow()
-    {
-
-    }
-
-    public void SetButtons() 
-    { 
-
-    }
 }

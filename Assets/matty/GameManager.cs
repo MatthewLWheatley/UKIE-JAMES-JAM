@@ -110,6 +110,11 @@ public class GameManager : MonoBehaviour
         currentAntiVirusState += value;
     }
 
+    public void StartDownload() 
+    { 
+    
+    }
+
     /*public void UpdateDeleteChance(float value)
     {
         deleteChance += value;
