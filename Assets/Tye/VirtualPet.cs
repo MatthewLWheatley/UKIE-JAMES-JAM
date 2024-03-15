@@ -79,6 +79,7 @@ public class VirtualPet : MonoBehaviour
             Vector3 worldPosition = petTransform.position + textOffset;
             Vector2 screenPosition = new Vector2(worldPosition.x, worldPosition.y);//Camera.main.WorldToScreenPoint(worldPosition);
             messageRectTransform.position = screenPosition;
+            messageRectTransform.SetAsLastSibling();
         }
         else
         { 
@@ -142,7 +143,7 @@ public class VirtualPet : MonoBehaviour
                     yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
                     animator.SetBool("isWalking?", false);
                     animator.SetBool("isTalking?", false);
-                    SetRandomTargetPosition();
+                    //SetRandomTargetPosition();
                     break;
 
                 case 4:
@@ -151,7 +152,7 @@ public class VirtualPet : MonoBehaviour
                     yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
                     animator.SetBool("isWalking?", false);
                     animator.SetBool("isTalking?", false);
-                    SetRandomTargetPosition();
+                    //SetRandomTargetPosition();
                     break;
             }
         }
